@@ -1,5 +1,5 @@
-require './rental.rb'
-require './person.rb'
+require './rental'
+require './person'
 
 class Book
   attr_accessor :title, :author
@@ -14,5 +14,5 @@ class Book
   def create_rental(date, person)
     rental = Rental.new(self, date, person)
     @rentals.push(rental)
-  end  
+  end
 end

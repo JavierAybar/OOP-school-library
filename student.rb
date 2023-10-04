@@ -1,12 +1,11 @@
 require './person'
-require './classroom.rb'
+require './classroom'
 
 class Student < Person
-  attr_accessor :name
-  attr_accessor :classroom
+  attr_accessor :name, :classroom
 
-  def initialize(classroom, age, name, parent_permission: true)
-    super(age, name)
+  def initialize(classroom, age, name, parent_permission)
+    super(age, name, parent_permission: parent_permission)
     @classroom = classroom
   end
 
@@ -17,5 +16,5 @@ class Student < Person
   def add_classroom=(classroom)
     @classroom = classroom
     classroom.add_student(self)
-  end  
+  end
 end
