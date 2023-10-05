@@ -15,6 +15,6 @@ class Student < Person
 
   def add_classroom=(classroom)
     @classroom = classroom
-    classroom.add_student(self)
+    classroom.students.push(self)
   end
 end
