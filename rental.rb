@@ -9,5 +9,9 @@ class Rental
     @date = date
     @book = book
     @person = person
+
+    # Establish the bidirectional relationship
+    person.rentals << self
+    book.rentals << self
   end
 end
