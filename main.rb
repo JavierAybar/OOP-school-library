@@ -2,14 +2,22 @@ require_relative 'app'
 
 class Interface
   def initialize
-    @app = App.new()
-    
+    @app = App.new
     display_menu
   end
 
-def display_menu
-  loop do
-  menu_options ="
+  def display_menu
+    loop do
+      print_menu
+      option = gets.chomp.to_i
+      break if option == 7
+
+      handle_option(option)
+    end
+  end
+
+  def print_menu
+    menu_options = "
 1 - List all books
 2 - List all people
 3 - Create a person
@@ -18,13 +26,10 @@ def display_menu
 6 - List all rentals for a given person id
 7 - Exit
 "
-    puts "----Welcome to School Library App!----",
-    "",
-    "Please choose an option by entering a number:",
-    menu_options
+    puts '----Welcome to School Library App!----', '', 'Please choose an option by entering a number:', menu_options
+  end
 
-    option = gets.chomp.to_i
-
+  def handle_option(option)
     case option
     when 1
       @app.list_all_books
@@ -37,15 +42,11 @@ def display_menu
     when 5
       @app.create_rental
     when 6
-     @app.list_all_rental
-    when 7
-      puts "Thank you for using this app!"
-      break
+      @app.list_all_rental
     else
-      puts "Invalid choice"
+      puts 'Invalid choice'
     end
-  end  
- end
+  end
 end
 
 def main
